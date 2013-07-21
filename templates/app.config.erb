@@ -98,7 +98,7 @@
             %% Config is of the form:
             %%   {num-builds, per-timespan-in-milliseconds}
             %% Default is 1 build per hour.
-            {anti_entropy_build_limit, {1, 3600000}},
+            {anti_entropy_build_limit, {<%= @anti_entropy_build_limit_count %>, <%= @anti_entropy_build_limit_per %>}},
 
             %% Determine how often hash trees are expired after being built.
             %% Periodically expiring a hash tree ensures the on-disk hash tree
@@ -124,8 +124,8 @@
 
             %% The LevelDB options used by AAE to generate the LevelDB-backed
             %% on-disk hashtrees.
-            {anti_entropy_leveldb_opts, [{write_buffer_size, 4194304},
-                                         {max_open_files, 20}]},
+            {anti_entropy_leveldb_opts, [{write_buffer_size, <%= @ldb_write_buffer_size %>},
+                                         {max_open_files, <%= @ldb_max_open_files %>}]},
 
             %% mapred_name is URL used to submit map/reduce requests to Riak.
             {mapred_name, "<%= @mapred_name %>"},
@@ -256,68 +256,68 @@
             %%
             {handlers, [ 
                            {lager_file_backend, [ 
-                               {"/var/log/riak/error.log", error, 10485760, "$D0", 5}, 
-                               {"/var/log/riak/console.log", info, 10485760, "$D0", 5} 
+                               {"<%= @error_log %>", error, <%= @error_log_size %>, "<%= @error_log_date %>", <%= @error_log_count %>}, 
+                               {"<%= @console_log %>", info, <%= @console_log_size %>, "<%= @console_log_date %>", <%= @console_log_count %>} 
                            ]} 
                        ] },
 
             %% Whether to write a crash log, and where.
             %% Commented/omitted/undefined means no crash logger.
-            {crash_log, "/var/log/riak/crash.log"},
+            {crash_log, "<%= @crash_log %>"},
 
             %% Maximum size in bytes of events in the crash log - defaults to 65536
-            {crash_log_msg_size, 65536},
+            {crash_log_msg_size, <%= @crash_log_msg_size %>},
 
             %% Maximum size of the crash log in bytes, before its rotated, set
             %% to 0 to disable rotation - default is 0
-            {crash_log_size, 10485760},
+            {crash_log_size, <%= @crash_log_size %>},
 
             %% What time to rotate the crash log - default is no time
             %% rotation. See the lager README for a description of this format:
             %% https://github.com/basho/lager/blob/master/README.org
-            {crash_log_date, "$D0"},
+            {crash_log_date, "<%= @crash_log_date %>"},
 
             %% Number of rotated crash logs to keep, 0 means keep only the
             %% current one - default is 0
-            {crash_log_count, 5},
+            {crash_log_count, <%= @crash_log_count %>},
 
             %% Whether to redirect error_logger messages into lager - defaults to true
-            {error_logger_redirect, true},
+            {error_logger_redirect, <%= @error_logger_redirect %>},
 
             %% maximum number of error_logger messages to handle in a second
             %% lager 2.0.0 shipped with a limit of 50, which is a little low for riak's startup
-            {error_logger_hwm, 100}
+            {error_logger_hwm, <%= @error_logger_hwm %>}
         ]},
 
  %% riak_sysmon config
  {riak_sysmon, [
          %% To disable forwarding events of a particular type, use a
          %% limit of 0.
-         {process_limit, 30},
-         {port_limit, 2},
+         {process_limit, <%= @process_limit %>},
+         {port_limit, <%= @port_limit %>},
 
          %% Finding reasonable limits for a given workload is a matter
          %% of experimentation.
          %% NOTE: Enabling the 'gc_ms_limit' monitor (by setting non-zero)
          %%       can cause performance problems on multi-CPU systems.
-         {gc_ms_limit, 0},
-         {heap_word_limit, 40111000},
+         {gc_ms_limit, <%= @gc_ms_limit %>},
+         {heap_word_limit, <%= @heap_word_limit %>},
 
          %% Configure the following items to 'false' to disable logging
          %% of that event type.
-         {busy_port, true},
-         {busy_dist_port, true}
+         {busy_port, <%= @busy_port %>},
+         {busy_dist_port, <%= @busy_dist_port %>}
         ]},
 
  %% SASL config
  {sasl, [
-         {sasl_error_logger, false}
+         {sasl_error_logger, <%= @sasl_error_logger %>}
         ]},
 
  %% riak_control config
  {riak_control, [
                 %% Set to false to disable the admin panel.
-                {enabled, false},
+                {enabled, <%= @riak_control_enabled %>},
 
                 %% Authentication style used for access to the admin
                 %% panel. Valid styles are 'userlist' <TODO>.
@@ -326,12 +326,12 @@
                 %% If auth is set to 'userlist' then this is the
                 %% list of usernames and passwords for access to the
                 %% admin panel.
-                {userlist, [{"user", "pass"}
+                {userlist, [{"<%= @riak_control_user %>", "<%= @riak_control_password %>"}
                            ]},
 
                 %% The admin panel is broken up into multiple
                 %% components, each of which is enabled or disabled
                 %% by one of these settings.
-                {admin, true}
+                {admin, <%= @riak_control_admin %>}
                 ]}
 ].
