@@ -94,8 +94,7 @@ class riak(
 
 # riak_control
   $control_enabled  = false,
-  $control_user     = 'user',
-  $control_password = 'pass',
+  $control_users    = [{user => "user", password => "pass"}],
   $control_admin    = true
 ) {
 

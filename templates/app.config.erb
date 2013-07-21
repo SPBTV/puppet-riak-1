@@ -331,7 +331,7 @@
                 %% If auth is set to 'userlist' then this is the
                 %% list of usernames and passwords for access to the
                 %% admin panel.
-                {userlist, [{"<%= @control_user %>", "<%= @control_password %>"}
+                {userlist, [<%= @control_users.collect {|user| "{\"#{user["user"]}\", \"#{user["password"]}\"}"}.join(", ") %>
                            ]},
 
                 %% The admin panel is broken up into multiple
