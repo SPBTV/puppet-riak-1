@@ -103,7 +103,7 @@
             %% Config is of the form:
             %%   {num-builds, per-timespan-in-milliseconds}
             %% Default is 1 build per hour.
-            {anti_entropy_build_limit, {<%= @anti_entropy_build_limit_count %>, <%= @anti_entropy_build_limit_per %>}},
+            {anti_entropy_build_limit, {<%= @anti_entropy_build_limit["num_builds"] %>, <%= @anti_entropy_build_limit["per_timespan"] %>}},
 
             %% Determine how often hash trees are expired after being built.
             %% Periodically expiring a hash tree ensures the on-disk hash tree
@@ -129,8 +129,8 @@
 
             %% The LevelDB options used by AAE to generate the LevelDB-backed
             %% on-disk hashtrees.
-            {anti_entropy_leveldb_opts, [{write_buffer_size, <%= @ldb_write_buffer_size %>},
-                                         {max_open_files, <%= @ldb_max_open_files %>}]},
+            {anti_entropy_leveldb_opts, [{write_buffer_size, <%= @anti_entropy_leveldb_opts["write_buffer_size"] %>},
+                                         {max_open_files, <%= @anti_entropy_leveldb_opts["max_open_files"] %>}]},
 
             %% mapred_name is URL used to submit map/reduce requests to Riak.
             {mapred_name, "<%= @mapred_name %>"},

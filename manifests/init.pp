@@ -28,14 +28,18 @@ class riak(
 # riak_kv
   $storage_backend                = 'riak_kv_bitcask_backend',
   $anti_entropy                   = 'on',
-  $anti_entropy_build_limit_count = 1,
-  $anti_entropy_build_limit_per   = 3600000,
+  $anti_entropy_build_limit       = {
+    num_builds   => 1,
+    per_timespan => 3600000,
+  },
   $anti_entropy_expire            = 604800000,
   $anti_entropy_concurrency       = 2,
   $anti_entropy_tick              = 15000,
   $anti_entropy_data_dir          = '/var/lib/riak/anti_entropy',
-  $ldb_write_buffer_size          = 4194304,
-  $ldb_max_open_files             = 20,
+  $anti_entropy_leveldb_opts      = {
+    write_buffer_size => 4194304,
+    max_open_files    => 20,
+  },
   $mapred_name                    = 'mapred',
   $mapred_2i_pipe                 = true,
   $map_js_vm_count                = 8,
