@@ -9,11 +9,13 @@ This module manages installing, configuring and running Riak.
 Basic installation:
 
     class {'riak':
+      node_name => 'riak@127.0.0.1',
     }
 
 Basic installation w/ Control
 
     class {'riak':
-      https                => true,
-      riak_control_enabled => true,
+      node_name       => 'riak@127.0.0.1',
+      https           => true,
+      control_enabled => true,
     }

@@ -317,7 +317,7 @@
  %% riak_control config
  {riak_control, [
                 %% Set to false to disable the admin panel.
-                {enabled, <%= @riak_control_enabled %>},
+                {enabled, <%= @control_enabled %>},
 
                 %% Authentication style used for access to the admin
                 %% panel. Valid styles are 'userlist' <TODO>.
@@ -326,12 +326,12 @@
                 %% If auth is set to 'userlist' then this is the
                 %% list of usernames and passwords for access to the
                 %% admin panel.
-                {userlist, [{"<%= @riak_control_user %>", "<%= @riak_control_password %>"}
+                {userlist, [{"<%= @control_user %>", "<%= @control_password %>"}
                            ]},
 
                 %% The admin panel is broken up into multiple
                 %% components, each of which is enabled or disabled
                 %% by one of these settings.
-                {admin, <%= @riak_control_admin %>}
+                {admin, <%= @control_admin %>}
                 ]}
 ].

@@ -88,10 +88,10 @@ class riak(
   $sasl_error_logger = false,
 
 # riak_control
-  $riak_control_enabled  = false,
-  $riak_control_user     = 'user',
-  $riak_control_password = 'pass',
-  $riak_control_admin    = true
+  $control_enabled  = false,
+  $control_user     = 'user',
+  $control_password = 'pass',
+  $control_admin    = true
 ) {
 
   class {'riak::package':
