@@ -1,6 +1,11 @@
 %% -*- mode: erlang;erlang-indent-level: 4;indent-tabs-mode: nil -*-
 %% ex: ft=erlang ts=4 sw=4 et
-[
+[<% if @epmd_listen_min.to_i != 0 or @epmd_listen_max.to_i != 65535 %>
+ %% Kernel settings
+ {kernel, [
+          {inet_dist_listen_min, <%= @epmd_listen_min %>},
+          {inet_dist_listen_max, <%= @epmd_listen_max %>}
+          ]},<% end %>
  %% Riak Client APIs config
  {riak_api, [
             %% pb_backlog is the maximum length to which the queue of pending

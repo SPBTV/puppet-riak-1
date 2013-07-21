@@ -3,6 +3,10 @@ class riak(
   $node_name = 'riak@127.0.0.1',
   $setcookie = 'riak',
 
+# kernel settings
+  $epmd_listen_min = 0,
+  $epmd_listen_max = 65535,
+
 # riak_api
   $pb_ip   = '127.0.0.1',
   $pb_port = 8087,
