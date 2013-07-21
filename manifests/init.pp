@@ -14,9 +14,12 @@ class riak(
 # riak_core
   $ring_state_dir     = '/var/lib/riak/ring',
   $ring_creation_size = 64,
-  $https              = false,
+  $http               = true,
   $http_ip            = '127.0.0.1',
   $http_port          = 8098,
+  $https              = false,
+  $https_ip           = '127.0.0.1',
+  $https_port         = 8098,
   $handoff_port       = 8099,
   $dtrace_support     = false,
   $platform_bin_dir   = '/usr/sbin',
