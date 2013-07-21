@@ -1,4 +1,8 @@
 class riak(
+# vm.args
+  $node_name = 'riak@127.0.0.1',
+  $setcookie = 'riak',
+
 # riak_api
   $pb_ip   = '127.0.0.1',
   $pb_port = 8087,
