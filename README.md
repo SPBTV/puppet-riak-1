@@ -10,3 +10,10 @@ Basic installation:
 
     class {'riak':
     }
+
+Basic installation w/ Control
+
+    class {'riak':
+      https                => true,
+      riak_control_enabled => true,
+    }
