@@ -26,11 +26,11 @@
 
               %% http is a list of IP addresses and TCP ports that the Riak
               %% HTTP interface will bind.
-              {http, [ {"<%= @http_ip %>", <%= @http_port %> } ]},
+              <%= "%" if @https %>{http, [ {"<%= @http_ip %>", <%= @http_port %> } ]},
 
               %% https is a list of IP addresses and TCP ports that the Riak
               %% HTTPS interface will bind.
-              %{https, [{ "127.0.0.1", 8098 }]},
+              <%= "%" unless @https %>{https, [{ "<%= @http_ip %>", <%= @http_port %> }]},
 
               %% Default cert and key locations for https can be overridden
               %% with the ssl config variable, for example:

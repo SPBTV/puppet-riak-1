@@ -5,6 +5,7 @@ class riak(
 
 # riak_core
   $ring_state_dir    = '/var/lib/riak/ring',
+  $https             = false,
   $http_ip           = '127.0.0.1',
   $http_port         = 8098,
   $handoff_port      = 8099,
