@@ -18,6 +18,10 @@ Basic installation w/ Control
       node_name       => 'riak@127.0.0.1',
       https           => true,
       control_enabled => true,
+      control_users   => [{
+        user     => 'admin',
+        password => 'password',
+      }],
     }
 
 Limit epmd listen port range
