@@ -34,10 +34,10 @@
 
               %% Default cert and key locations for https can be overridden
               %% with the ssl config variable, for example:
-              %{ssl, [
-              %       {certfile, "/etc/riak/cert.pem"},
-              %       {keyfile, "/etc/riak/key.pem"}
-              %      ]},
+              <%= "%" unless @https %>{ssl, [
+              <%= "%" unless @https %>       {certfile, "/etc/riak/cert.pem"},
+              <%= "%" unless @https %>       {keyfile, "/etc/riak/key.pem"}
+              <%= "%" unless @https %>      ]},
 
               %% riak_handoff_port is the TCP port that Riak uses for
               %% intra-cluster data handoff.
