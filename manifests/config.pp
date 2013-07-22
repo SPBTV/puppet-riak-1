@@ -1,5 +1,13 @@
 class riak::config {
 
+  file {'/etc/riak/default':
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    mode    => 0644,
+    content => 'ulimit -n 4096',
+  }
+
   file {'/etc/riak/app.config':
     ensure  => present,
     owner   => 'riak',
