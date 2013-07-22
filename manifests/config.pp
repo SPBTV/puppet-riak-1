@@ -1,6 +1,6 @@
 class riak::config {
 
-  file {'/etc/riak/default':
+  file {'/etc/default/riak':
     ensure  => present,
     owner   => 'root',
     group   => 'root',
