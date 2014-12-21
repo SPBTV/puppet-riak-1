@@ -4,7 +4,7 @@ class riak::config {
     ensure  => present,
     owner   => 'root',
     group   => 'root',
-    mode    => 0644,
+    mode    => '0644',
     content => 'ulimit -n 4096',
   }
 
@@ -12,7 +12,7 @@ class riak::config {
     ensure  => present,
     owner   => 'riak',
     group   => 'riak',
-    mode    => 0644,
+    mode    => '0644',
     content => template('riak/app.config.erb'),
   }
 
@@ -20,7 +20,7 @@ class riak::config {
     ensure  => present,
     owner   => 'riak',
     group   => 'riak',
-    mode    => 0644,
+    mode    => '0644',
     content => template('riak/vm.args.erb'),
   }
 
