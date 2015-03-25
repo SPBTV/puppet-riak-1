@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/jbussdieker/puppet-riak.png?branch=master)](https://travis-ci.org/jbussdieker/puppet-riak)
 
-I built this module to manage installing, configuring and running Riak for version 1.4.8 of Riak. If you are looking for the most up-to-date manifest, review [the community configuration management strategy](https://github.com/basho-labs/the-riak-community/blob/master/meetup-strategy.md).
+I built this module to manage installing, configuring and running Riak for version 1.4.8 of Riak. If you are looking for the most up-to-date manifest, review [the community configuration management strategy](https://github.com/basho-labs/the-riak-community/blob/master/config-mgmt-strategy.md).
 
 # Usage
 
