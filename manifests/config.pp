@@ -5,7 +5,6 @@ class riak::config inherits riak {
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    content => 'ulimit -n 65536',
   }
 
   file {'/etc/riak/app.config':
