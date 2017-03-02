@@ -1,11 +1,11 @@
-class riak::config {
+class riak::config inherits riak {
 
   file {'/etc/default/riak':
     ensure  => present,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    content => 'ulimit -n 4096',
+    content => 'ulimit -n 65536',
   }
 
   file {'/etc/riak/app.config':
