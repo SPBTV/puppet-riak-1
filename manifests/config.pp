@@ -1,4 +1,4 @@
-class riak::config {
+class riak::config inherits riak {
 
   file {'/etc/default/riak':
     ensure  => present,
